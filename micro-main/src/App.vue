@@ -1,9 +1,19 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div id="app">
+    <div id="nav">
+      <router-link to="/">主应用-Home</router-link> |
+      <router-link to="/about">主应用-About</router-link> |
+      <router-link to="/other">主应用-Other</router-link> |
+      <router-link to="/app-react">子应用-React</router-link> |
+      <router-link to="/vue3">子应用-Vue3</router-link> |
+      <router-link to="/vue2">子应用-Vue2</router-link> |
+    </div>
+
+    <!-- 主应用路由渲染入口 -->
+    <router-view />
+    <!-- 子应用渲染的入口 -->
+    <div id="subapp-container"></div>
   </div>
-  <router-view />
 </template>
 
 <style lang="scss">

@@ -1,5 +1,5 @@
 {
-  "name": "micro-main",
+  "name": "micro-vue",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "qiankun": "^2.10.16",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0"
   },
@@ -24,8 +23,6 @@
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.0.0",
-    "prettier": "^2.2.1",
-    "sass": "^1.26.5",
-    "sass-loader": "^8.0.2"
+    "prettier": "^2.2.1"
   }
 }
