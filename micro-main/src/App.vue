@@ -4,7 +4,7 @@
       <router-link to="/">主应用-Home</router-link> |
       <router-link to="/about">主应用-About</router-link> |
       <router-link to="/other">主应用-Other</router-link> |
-      <router-link to="/app-react">子应用-React</router-link> |
+      <router-link to="/react">子应用-React</router-link> |
       <router-link to="/vue3">子应用-Vue3</router-link> |
       <router-link to="/vue2">子应用-Vue2</router-link> |
     </div>
