@@ -4,7 +4,7 @@ import router from './router';
 
 import { registerMicroApps, start } from 'qiankun';
 
-// 注册微应用
+// 1. 配置微应用
 const apps = [
   {
     name: 'reactApp',
@@ -26,6 +26,7 @@ const apps = [
   },
 ];
 
+// 2. 注册微应用
 registerMicroApps(apps, {
   // qiankun 生命周期钩子 - 加载前
   beforeLoad: (app) => {
@@ -38,7 +39,8 @@ registerMicroApps(apps, {
     return Promise.resolve();
   },
 });
-// 启动qiankun
+
+// 3. 启动qiankun
 start();
 
 createApp(App).use(router).mount('#app');
