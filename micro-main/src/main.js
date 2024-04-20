@@ -1,8 +1,9 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
-
 import { registerMicroApps, start } from 'qiankun';
+// qiankun 通信
+import './communication';
 
 // 1. 配置微应用
 const apps = [

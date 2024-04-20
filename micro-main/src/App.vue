@@ -1,5 +1,11 @@
 <template>
   <div id="app">
+    <!-- 通信 start -->
+    <button @click="login" style="margin-right: 10px">登陆</button>
+    <button @click="exit" style="margin-right: 10px">退出登陆</button>
+    <span>{{ token }}</span>
+    <!-- 通信 end -->
+
     <div id="nav">
       <router-link to="/">主应用-Home</router-link> |
       <router-link to="/about">主应用-About</router-link> |
@@ -15,6 +21,59 @@
     <div id="subapp-container"></div>
   </div>
 </template>
+
+<script>
+import actions from './communication';
+
+export default {
+  mounted() {
+    /**
+     * 注册一个观察者函数
+     * 1. state: 变更后的状态
+     * 2. prevState: 变更前的状态
+     */
+    actions.onGlobalStateChange((state, prevState) => {
+      console.log('🌟[主应用观察者]：old ->', prevState);
+      console.log('🌟[主应用观察者]：new ->', state);
+      // 主应用发起 update
+      if (state.type === 'main') {
+        this.token = state.token;
+      }
+      // 子应用发起 update
+      if (state.type === 'micro') {
+        this.token = state.token;
+        this.count = 1;
+      }
+    });
+  },
+  data() {
+    return {
+      token: null,
+      count: 1,
+    };
+  },
+  methods: {
+    // 主应用登录，设置 token
+    login() {
+      const token = 'TOKEN' + this.count++;
+      actions.setGlobalState({
+        origin: 'main',
+        type: 'main',
+        token,
+      });
+    },
+    // 主应用退出登录，清空 token
+    exit() {
+      actions.setGlobalState({
+        origin: 'main',
+        type: 'main',
+        token: null,
+      });
+      this.count = 1;
+    },
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
@@ -36,5 +95,9 @@
       color: #42b983;
     }
   }
+}
+
+#subapp-container {
+  background-color: #ececec;
 }
 </style>

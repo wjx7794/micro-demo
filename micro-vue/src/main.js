@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue';
 import { routes } from './router/index';
 import './public-path';
+import actions from './actions.js';
 
 let router = null;
 let instance = null;
@@ -15,6 +16,9 @@ const app = createApp(App);
  * 2. 微应用单独启动时运行
  */
 function render(props = {}) {
+  // 注入 actions 实例
+  actions.setActions(props);
+
   const { container } = props;
 
   history = createWebHistory(window.__POWERED_BY_QIANKUN__ ? '/vue3' : '/');
