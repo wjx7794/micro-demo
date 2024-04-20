@@ -1,4 +1,5 @@
 import { registerMicroApps, start } from 'qiankun';
+import shared from './shared';
 
 // 1. 配置微应用
 const apps = [
@@ -13,6 +14,10 @@ const apps = [
     entry: '//localhost:10000',
     container: '#subapp-container',
     activeRule: '/vue3',
+    props: {
+      // 通过 props 将 shared 传递给子应用
+      shared,
+    },
   },
   {
     name: 'vue2App',

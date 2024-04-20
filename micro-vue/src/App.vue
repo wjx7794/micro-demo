@@ -5,6 +5,13 @@
     <span id="token">{{ token }}</span>
     <!-- 通信 end -->
 
+    <!-- shared start -->
+    <div style="margin-top: 10px">
+      <button @click="addNum">子应用请求增加num</button>
+      num: {{ num }}
+    </div>
+    <!-- shared end -->
+
     <div id="nav">
       <router-link to="/">vue3-Home</router-link> |
       <router-link to="/other">vue3-other</router-link> |
@@ -16,14 +23,23 @@
 
 <script>
 import actions from './actions.js';
+import SharedModule from './shared';
 
 export default {
   data() {
     return {
       token: null,
+      num: null,
+      sharedInstance: null,
     };
   },
   mounted() {
+    const sharedInstance = SharedModule.getShared();
+    this.num = sharedInstance.getNum();
+    this.sharedInstance = sharedInstance;
+    setInterval(() => {
+      this.num = sharedInstance.getNum();
+    }, 1000);
     /**
      * 注册观察者函数
      * 1. onGlobalStateChange 第二个参数为 true，表示立即执行一次观察者函数
@@ -44,6 +60,10 @@ export default {
         type: 'micro',
         token: 'Token0',
       });
+    },
+    // shared
+    addNum() {
+      this.sharedInstance.setNum(10);
     },
   },
 };

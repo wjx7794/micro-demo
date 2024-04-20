@@ -6,6 +6,13 @@
     <span>{{ token }}</span>
     <!-- 通信 end -->
 
+    <!-- shared start -->
+    <div @click="addNum" style="margin-top: 10px">
+      <button>增加num</button>
+      num: {{ $store.state.num }}
+    </div>
+    <!-- shared end -->
+
     <div id="nav">
       <router-link to="/">主应用-Home</router-link> |
       <router-link to="/about">主应用-About</router-link> |
@@ -70,6 +77,11 @@ export default {
         token: null,
       });
       this.count = 1;
+    },
+    // shared
+    addNum() {
+      // 提交一个变更
+      this.$store.commit('increment', 10);
     },
   },
 };
