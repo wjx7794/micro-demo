@@ -37,9 +37,10 @@ export default {
     const sharedInstance = SharedModule.getShared();
     this.num = sharedInstance.getNum();
     this.sharedInstance = sharedInstance;
-    setInterval(() => {
-      this.num = sharedInstance.getNum();
-    }, 1000);
+    sharedInstance.watchNum((value) => {
+      this.num = value;
+    });
+
     /**
      * 注册观察者函数
      * 1. onGlobalStateChange 第二个参数为 true，表示立即执行一次观察者函数
