@@ -5,6 +5,7 @@ import { routes } from './router/index';
 import './public-path';
 import actions from './actions.js';
 import SharedModule from './shared.js';
+import './seperate';
 
 let router = null;
 let instance = null;

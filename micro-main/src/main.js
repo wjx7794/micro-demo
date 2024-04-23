@@ -6,5 +6,6 @@ import store from './store';
 import './register';
 // qiankun 通信
 import './communication';
+import './seperate';
 
 createApp(App).use(router).use(store).mount('#app');

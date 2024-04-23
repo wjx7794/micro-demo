@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="child">
     <!-- 通信 start -->
     <button @click="reset" style="margin-right: 10px">重置为0</button>
     <span id="token">{{ token }}</span>

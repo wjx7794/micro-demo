@@ -112,4 +112,9 @@ export default {
 #subapp-container {
   background-color: #ececec;
 }
+
+.child {
+  background-color: #ccc;
+  border: 1px solid red;
+}
 </style>

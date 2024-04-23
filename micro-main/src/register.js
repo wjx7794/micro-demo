@@ -42,4 +42,10 @@ registerMicroApps(apps, {
 });
 
 // 3. 启动qiankun
-start();
+// start();
+start({
+  sandbox: {
+    strictStyleIsolation: true, // 严格沙箱模式
+    experimentalStyleIsolation: true,
+  },
+});
